@@ -10,19 +10,19 @@ mongodb://<dbuser>:<dbpassword>@ds161049.mlab.com:61049/life_stream
 
 # Project Structure
 
-.
-├── bower_components          # Client-side packages files
-├── config                    # Primarily server-side configurations (MongoDb, APIs, etc.)
-├── modules    
-  ├── core                    # Code for the header and landing page resides
-    ├── client
-    ├── server
-    ├── tests
-  ├── users                   # Code for all other parts of the app resides
-    ├── client
-    ├── server
-    ├── tests
-├── node_modules             # Node modules files
-├── public                   # Client-side code
-├── scripts
-└── README.md
+  .
+  ├── bower_components          # Client-side packages files
+  ├── config                    # Primarily server-side configurations (MongoDb, APIs, etc.)
+  ├── modules    
+    ├── core                    # Code for the header and landing page resides
+      ├── client
+      ├── server
+      ├── tests
+    ├── users                   # Code for all other parts of the app resides
+      ├── client
+      ├── server
+      ├── tests
+  ├── node_modules             # Node modules files
+  ├── public                   # Client-side code
+  ├── scripts
+  └── README.md
