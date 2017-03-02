@@ -9,7 +9,7 @@ To connect using a driver via the standard MongoDB URI (what's this?):
 mongodb://<dbuser>:<dbpassword>@ds161049.mlab.com:61049/life_stream
 
 # Project Structure
-
+```
   .
   ├── bower_components          # Client-side packages files
   ├── config                    # Primarily server-side configurations (MongoDb, APIs, etc.)
@@ -26,3 +26,4 @@ mongodb://<dbuser>:<dbpassword>@ds161049.mlab.com:61049/life_stream
   ├── public                   # Client-side code
   ├── scripts
   └── README.md
+  ```
