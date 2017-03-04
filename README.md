@@ -33,6 +33,8 @@ mongodb://<dbuser>:<dbpassword>@ds161049.mlab.com:61049/life_stream
         ├── password            # Reset/forgot password
         ├── settings            # Profile settings
       ├── server
+        ├── config
+          ├── strategies        # Authentication packages behaviors
         ├── routes                      # routing
           ├── core.server.routes.js     #
           ├── user.server.routes.js
