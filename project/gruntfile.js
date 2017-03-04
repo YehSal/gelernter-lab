@@ -106,7 +106,6 @@ module.exports = function (grunt) {
     },
     csslint: {
       all: {
-        src: defaultAssets.client.css
       }
     },
     ngAnnotate: {
