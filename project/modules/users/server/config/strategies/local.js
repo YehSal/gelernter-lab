@@ -14,6 +14,9 @@ module.exports = function () {
     passwordField: 'password'
   },
   function (username, password, done) {
+      // if (!username || !password) {
+      //     return this.fail({ message: options.badRequestMessage || 'Missing credentials' }, 400);
+      // }
     User.findOne({
       username: username.toLowerCase()
     }, function (err, user) {
