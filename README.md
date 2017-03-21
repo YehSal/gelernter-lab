@@ -8,6 +8,11 @@ mongo ds161049.mlab.com:61049/life_stream -u <dbuser> -p <dbpassword>
 To connect using a driver via the standard MongoDB URI:
 mongodb://<dbuser>:<dbpassword>@ds161049.mlab.com:61049/life_stream
 
+# Adding Dependencies
+1. Install dependency using `bower install`
+2. Add dependency in `client/app/config.js`
+3. Load the js file from `bower_componenets` in `layout.server.view.html` before `</body>` tag
+
 # Project Structure
 ```
   .
