@@ -18,6 +18,10 @@ export class ContentInputComponent implements OnInit {
         if (this.content) {
             // edit
             this.content.name = form.value.name;
+            this.contentService.updateMessage(this.content)
+                .subscribe(
+                    result => console.log(result)
+                );
             this.content = null;
         } else {
             const content = new Content(form.value.name, 'Yehia');
