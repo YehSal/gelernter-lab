@@ -27,6 +27,7 @@ module.exports = function (grunt) {
       }
     },
     watch: {
+
       serverViews: {
         files: defaultAssets.server.views,
         options: {

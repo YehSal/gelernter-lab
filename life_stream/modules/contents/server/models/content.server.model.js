@@ -22,7 +22,7 @@ var ContentSchema = new Schema({
     required: 'Please add at least one tag',
     trim: true
   },
-  fileURL: {
+  file: {
     type: String,
     // required: 'Please add the link to the file of your content',
     trim: true
