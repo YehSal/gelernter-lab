@@ -1,54 +1,60 @@
 <section>
-  <div class="page-header">
-    <h1>{{vm.content._id ? 'Edit Content' : 'New Content'}}</h1>
-  </div>
-  <div class="col-md-12">
-    <form name="vm.form.contentForm" class="form-horizontal" ng-submit="vm.save(vm.form.contentForm.$valid)" novalidate>
-      <fieldset>
-        <div class="form-group" show-errors>
-          <label class="control-label" for="name">Name</label>
-          <input name="name" type="text" ng-model="vm.content.name" id="name" class="form-control" placeholder="Name" required>
-          <div ng-messages="vm.form.contentForm.name.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Content name is required.</p>
-          </div>
-        </div>
+    <div class="page-header">
+        <h1>{{vm.content._id ? 'Edit Content' : 'New Content'}}</h1>
+    </div>
+    <div class="col-md-12">
+        <form name="vm.form.contentForm" class="form-horizontal" ng-submit="vm.save(vm.form.contentForm.$valid)" novalidate>
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="file">File</label>
+                    <!--Upload functionality-->
+                    <input type="file" ngf-select ng-model="vm.content.file" name="file"  ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+                    <i ng-show="myForm.file.$error.maxSize">File too large
+                      {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                    <br>
+                    <span class="progress" ng-show="vm.content.file.progress >= 0">
+                        <div style="width:{{vm.content.file.progress}}%"
+                            ng-bind="vm.content.file.progress + '%'"></div>
+                    </span>
+                    <span ng-show="vm.content.file.result">Upload Successful</span>
+                    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                    <!-- <button type="submit" ng-click="submit()">submit</button> -->
+                    <!-- <div ng-messages="vm.form.contentForm.fileURL.$error" role="alert">
+                        <p class="help-block error-text" ng-message="required">Content file is required.</p>
+                    </div> -->
+                </div>
 
-        <div class="form-group" show-errors>
-          <label class="control-label" for="tags">Tags</label>
-          <input name="tags" type="text" ng-model="vm.content.tags" id="tags" class="form-control" placeholder="Tags" required>
-          <div ng-messages="vm.form.contentForm.tags.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Content tags are required.</p>
-          </div>
-        </div>
+                <div class="form-group" show-errors>
+                    <label class="control-label" for="name">Name</label>
+                    <input name="name" type="text" ng-model="vm.content.name" id="name" class="form-control" placeholder="Name" required>
+                    <div ng-messages="vm.form.contentForm.name.$error" role="alert">
+                        <p class="help-block error-text" ng-message="required">Content name is required.</p>
+                    </div>
+                </div>
 
-        <div class="form-group" show-errors>
-          <label class="control-label" for="fileURL">File</label>
-          <div class="col-md-4">
-            <input name="fileURL" type="file" ng-model="vm.content.fileURL" id="fileURL" class="form-control" placeholder="fileURL">
-          </div>
-          <div class="col-md-6">
-            <button ng-click="uploadFile()">Upload</button>
-          </div>
-          <div ng-messages="vm.form.contentForm.fileURL.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Content file URL is required.</p>
-          </div>
-        </div>
+                <div class="form-group" show-errors>
+                    <label class="control-label" for="tags">Tags</label>
+                    <input name="tags" type="text" ng-model="vm.content.tags" id="tags" class="form-control" placeholder="Tags" required>
+                    <div ng-messages="vm.form.contentForm.tags.$error" role="alert">
+                        <p class="help-block error-text" ng-message="required">Content tags are required.</p>
+                    </div>
+                </div>
 
-        <div class="form-group" show-errors>
-          <label class="control-label" for="privacy">Privacy</label>
-          <input name="privacy" type="text" ng-model="vm.content.privacy" id="privacy" class="form-control" placeholder="Privacy" required>
-          <div ng-messages="vm.form.contentForm.privacy.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Content privacy is required.</p>
-          </div>
-        </div>
+                <div class="form-group" show-errors>
+                    <label class="control-label" for="privacy">Privacy</label>
+                    <input name="privacy" type="text" ng-model="vm.content.privacy" id="privacy" class="form-control" placeholder="Privacy" required>
+                    <div ng-messages="vm.form.contentForm.privacy.$error" role="alert">
+                        <p class="help-block error-text" ng-message="required">Content privacy is required.</p>
+                    </div>
+                </div>
 
-        <div class="form-group">
-          <button type="submit" class="btn btn-default">{{vm.content._id ? 'Update' : 'Create'}}</button>
-        </div>
-        <div ng-show="vm.error" class="text-danger">
-          <strong ng-bind="vm.error"></strong>
-        </div>
-      </fieldset>
-    </form>
-  </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">{{vm.content._id ? 'Update' : 'Create'}}</button>
+                </div>
+                <div ng-show="vm.error" class="text-danger">
+                    <strong ng-bind="vm.error"></strong>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </section>
