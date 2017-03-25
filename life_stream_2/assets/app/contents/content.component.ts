@@ -33,6 +33,9 @@ export class ContentComponent {
     }
 
     onDelete() {
-        this.contentService.deleteMessage(this.content);
+        this.contentService.deleteMessage(this.content)
+            .subscribe(
+                result => console.log(result)
+            );
     }
 }
