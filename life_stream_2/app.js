@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-var appRoutes = require('./routes/app');
+var userRoutes = require('./routes/user');
 var contentRoutes = require('./routes/content');
 var appRoutes = require('./routes/app');
 
@@ -32,6 +32,7 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use('/user', userRoutes)
 app.use('/content', contentRoutes);
 app.use('/', appRoutes);
 
