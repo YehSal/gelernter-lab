@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { AuthService } from './auth.service';
+
 @Component({
     selector: 'app-authentication',
     template: `
@@ -9,10 +11,10 @@ import { Component } from '@angular/core';
                     <li routerLinkActive="active">
                         <a [routerLink]="['signup']">Sign up</a>
                     </li>
-                    <li routerLinkActive="active">
+                    <li routerLinkActive="active" *ngIf="!isLoggedin()">
                         <a [routerLink]="['signin']">Sign in</a>
                     </li>
-                    <li routerLinkActive="active">
+                    <li routerLinkActive="active" *ngIf="isLoggedin()">
                         <a [routerLink]="['logout']">Log out</a>
                     </li>
                 </ul>
@@ -26,5 +28,9 @@ import { Component } from '@angular/core';
 })
 
 export class AuthenticationComponent {
+    constructor(private authService: AuthService) {}
 
+    isLoggedin() {
+        return this.authService.isLoggedin();
+    }
 }
