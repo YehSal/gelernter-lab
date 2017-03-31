@@ -4,6 +4,7 @@ import 'rxjs/Rx';
 import { Observable } from 'rxjs/Rx';
 
 import { Content } from "./content.model";
+import {ErrorService} from "../errors/error.service";
 
 @Injectable()
 
@@ -11,7 +12,7 @@ export class ContentService {
     private contents: Content[] = [];
     contentIsEdit = new EventEmitter<Content>();
 
-    constructor(private http: Http){}
+    constructor(private http: Http, private errorService: ErrorService){}
 
     addMessage(message: Content) {
         const body = JSON.stringify(message);
@@ -30,7 +31,10 @@ export class ContentService {
                 this.contents.push(content);
                 return content;
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 
     getMessages() {
@@ -49,7 +53,10 @@ export class ContentService {
                 this.contents = transformedContents;
                 return transformedContents;
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 
     updateMessage(content: Content) {
@@ -60,8 +67,10 @@ export class ContentService {
             : '';
         return this.http.patch('http://localhost:3000/content/' + content.contentId + token, body, {headers: headers})
             .map((response: Response) => response.json())
-            .catch((error: Response) => Observable.throw(error.json()));
-
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 
     editMessage(content: Content) {
@@ -75,6 +84,9 @@ export class ContentService {
             : '';
         return this.http.delete('http://localhost:3000/content/' + content.contentId + token)
             .map((response: Response) => response.json())
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 }
