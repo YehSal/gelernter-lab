@@ -8,7 +8,7 @@ import { ErrorService } from "../errors/error.service";
 
 @Injectable()
 export class AuthService {
-    private domain = "https://life-stream-deployment.herokuapp.com/";
+    private domain = "http://life-stream-deployment.herokuapp.com/";
 
     constructor(private http: Http, private errorService: ErrorService) {}
 

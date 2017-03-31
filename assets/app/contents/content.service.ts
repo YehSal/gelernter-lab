@@ -4,12 +4,12 @@ import 'rxjs/Rx';
 import { Observable } from 'rxjs/Rx';
 
 import { Content } from "./content.model";
-import {ErrorService} from "../errors/error.service";
+import { ErrorService } from "../errors/error.service";
 
 @Injectable()
 
 export class ContentService {
-    private domain = "https://life-stream-deployment.herokuapp.com/";
+    private domain = "http://life-stream-deployment.herokuapp.com/";
     private contents: Content[] = [];
     contentIsEdit = new EventEmitter<Content>();
 
