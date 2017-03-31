@@ -38,4 +38,8 @@ export class ContentComponent {
                 result => console.log(result)
             );
     }
+
+    belongsToUser() {
+        return localStorage.getItem('userId') == this.content.userId;
+    }
 }

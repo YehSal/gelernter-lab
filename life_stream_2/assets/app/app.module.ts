@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ContentModule } from './contents/content.module';
 
 import { AppComponent } from "./app.component";
-import { ContentComponent } from "./contents/content.component";
-import { ContentListComponent } from "./contents/content-list.component";
-import { ContentInputComponent } from "./contents/content-input.component";
-import { ContentsComponent } from "./contents/contents.component";
 import { AuthenticationComponent } from "./auth/authentication.component";
 import { HeaderComponenet } from "./header.component";
 import { routing } from "./app.routing";
@@ -21,10 +18,6 @@ import { AuthService } from "./auth/auth.service";
 @NgModule({
     declarations: [
         AppComponent,
-        ContentComponent,
-        ContentListComponent,
-        ContentInputComponent,
-        ContentsComponent,
         AuthenticationComponent,
         HeaderComponenet,
         LogoutComponent,
@@ -33,10 +26,10 @@ import { AuthService } from "./auth/auth.service";
     ],
     imports: [
         BrowserModule,
-        FormsModule,
         routing,
         ReactiveFormsModule,
-        HttpModule
+        HttpModule,
+        ContentModule
     ],
     bootstrap: [AppComponent],
     providers: [AuthService]
