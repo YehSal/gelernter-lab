@@ -11,7 +11,7 @@ var contentRoutes = require('./routes/content');
 var appRoutes = require('./routes/app');
 
 var app = express();
-mongoose.connect('localhost:27017/node-angular');
+mongoose.connect('master-user:uilab@123@ds149030.mlab.com:49030/life-stream');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
