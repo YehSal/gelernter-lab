@@ -9,6 +9,7 @@ import {ErrorService} from "../errors/error.service";
 @Injectable()
 
 export class ContentService {
+    private domain = "https://life-stream-deployment.herokuapp.com/";
     private contents: Content[] = [];
     contentIsEdit = new EventEmitter<Content>();
 
@@ -20,7 +21,7 @@ export class ContentService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.post('http://localhost:3000/content' + token, body, {headers: headers})
+        return this.http.post(this.domain + 'content' + token, body, {headers: headers})
             .map((response: Response) => {
                 const result = response.json();
                 const content = new Content(
@@ -38,7 +39,7 @@ export class ContentService {
     }
 
     getMessages() {
-        return this.http.get('http://localhost:3000/content')
+        return this.http.get(this.domain + 'content')
             .map((response: Response) => {
                 const contents = response.json().obj;
                 let transformedContents: Content[] = [];
@@ -65,7 +66,7 @@ export class ContentService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.patch('http://localhost:3000/content/' + content.contentId + token, body, {headers: headers})
+        return this.http.patch(this.domain + 'content/' + content.contentId + token, body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
@@ -82,7 +83,7 @@ export class ContentService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.delete('http://localhost:3000/content/' + content.contentId + token)
+        return this.http.delete(this.domain + 'content/' + content.contentId + token)
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
