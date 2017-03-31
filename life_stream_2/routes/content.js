@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var jwt = require('jsonwebtoken');
 
-var Content = require('../models/content')
+var User = require('../models/user');
+var Content = require('../models/content');
 
 router.get('/', function(req, res, next) {
     Content.find()
+        .populate('user', 'firstName')
         .exec(function(err, contents) {
             if (err) {
                 return res.status(500).json({
@@ -19,26 +22,53 @@ router.get('/', function(req, res, next) {
         });
 });
 
-router.post('/', function (req, res, next) {
-    var content = new Content({
-        name: req.body.name
+// Validate token
+router.use('/', function(req, res, next) {
+    jwt.verify(req.query.token, 'secret', function(err, decoded) {
+        if (err) {
+            return res.status(401).json({
+                title: 'Not Authenticated',
+                error: err
+            })
+        }
+        next();
     });
+});
 
-    content.save(function(err, result) {
+router.post('/', function (req, res, next) {
+    var decoded = jwt.decode(req.query.token);
+    User.findById(decoded.user._id, function(err, user) {
         if (err) {
             return res.status(500).json({
                 title: 'An error occurred',
                 error: err
             });
         }
-        res.status(201).json({
-            message: 'Saved Content',
-            obj: result
+
+        var content = new Content({
+            name: req.body.name,
+            user: user
+        });
+
+        content.save(function(err, result) {
+            if (err) {
+                return res.status(500).json({
+                    title: 'An error occurred',
+                    error: err
+                });
+            }
+            user.contents.push(result);
+            user.save();
+            res.status(201).json({
+                message: 'Saved Content',
+                obj: result
+            });
         });
     });
 });
 
 router.patch('/:id', function(req, res, next) {
+    var decoded = jwt.decode(req.query.token);
     Content.findById(req.params.id, function(err, content) {
         if (err) {
             return res.status(500).json({
@@ -51,6 +81,12 @@ router.patch('/:id', function(req, res, next) {
                 title: 'Content not found',
                 error: {message: 'Content not found'}
             });
+        }
+        if (content.user != decoded.user._id) {
+            return res.status(401).json({
+                title: 'Not Authenticated',
+                error: {message: 'Users do not match'}
+            })
         }
         content.name = req.body.name;
         content.save(function(err, result) {
@@ -69,6 +105,7 @@ router.patch('/:id', function(req, res, next) {
 });
 
 router.delete('/:id', function(req, res, next) {
+    var decoded = jwt.decode(req.query.token);
     Content.findById(req.params.id, function(err, content) {
         if (err) {
             return res.status(500).json({
@@ -82,7 +119,12 @@ router.delete('/:id', function(req, res, next) {
                 error: {message: 'Content not found'}
             });
         }
-        content.name = req.body.name;
+        if (content.user != decoded.user._id) {
+            return res.status(401).json({
+                title: 'Not Authenticated',
+                error: {message: 'Users do not match'}
+            })
+        }
         content.remove(function(err, result) {
             if (err) {
                 return res.status(500).json({
