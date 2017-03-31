@@ -1,19 +1,14 @@
 # gelernter-lab
 Make sure you run `npm install` to download the node modules since they're added in the gitignore
 
-# Mlab
-To connect using the mongo shell:
-mongo ds161049.mlab.com:61049/life_stream -u <dbuser> -p <dbpassword>
+# How to run the app
 
-To connect using a driver via the standard MongoDB URI:
-mongodb://<dbuser>:<dbpassword>@ds161049.mlab.com:61049/life_stream
+1) Navigate into the folder (in the command line/ terminal)
+2) Run "npm install" to install all required dependencies
+3) Run "npm run build" to run the development build script => Keep this process running! It recompiles your files upon changes.
+4) Run "npm start" in a new command line/ terminal window => Keep this process running as well, it's your NodeJS server.
 
-# Adding Dependencies
-1. Install dependency using `bower install`
-2. Add dependency in `client/app/config.js`
-3. Load the js file from `bower_componenets` in `layout.server.view.html` before `</body>` tag
-
-# Project Structure
+# Project Structure (To be revised..)
 ```
   .
   ├── bower_components          # Client-side packages files
