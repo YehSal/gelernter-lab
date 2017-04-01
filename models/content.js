@@ -26,10 +26,13 @@ var schema = new Schema({
 
 // Update user when a message is deleted
 schema.post('remove', function(message) {
-    User.findById(message.user, function(err, user) {
+    User.findById(content.user, function(err, user) {
         user.contents.pull(message);
         user.save();
     });
 });
+
+
+
 
 module.exports = mongoose.model('Content', schema);
