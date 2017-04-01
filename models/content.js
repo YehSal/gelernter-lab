@@ -11,6 +11,17 @@ var schema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    updated: {
+        type: Date,
+        default: Date.now
+    },
+    file : {
+        type: Schema.Types.Mixed
+    }
 });
 
 // Update user when a message is deleted
