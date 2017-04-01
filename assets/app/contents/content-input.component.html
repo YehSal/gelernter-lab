@@ -1,9 +1,22 @@
+<style>
+    .my-drop-zone { border: dotted 3px lightgray; }
+    .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+    .another-file-over-class { border: dotted 3px green; }
+
+    html, body { height: 100%; }
+</style>
+
 <div class="col-md-8 col-md-offset-2">
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" [ngModel]="content?.name">
-            <p class="help-block">Please upload your content here!</p>
+            <p class="help-block">Write the name of your content here</p>
+        </div>
+        <div class="form-group">
+            <label for="file">File</label>
+            <input type="file" ng2FileSelect [uploader]="uploader" id="file" name="file" [ngModel]="content?.file" />
+            <p class="help-block">Upload your file here.</p>
         </div>
         <button type="button" class="btn btn-danger" (click)="onClear(f)">Clear</button>
         <button class="btn btn-primary" type="submit">Save</button>
