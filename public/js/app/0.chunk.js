@@ -16,7 +16,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = __webpack_require__(1);
 var common_1 = __webpack_require__(87);
-var forms_1 = __webpack_require__(433);
+var forms_1 = __webpack_require__(434);
 var auth_routing_1 = __webpack_require__(990);
 var logout_component_1 = __webpack_require__(986);
 var signin_component_1 = __webpack_require__(987);
@@ -61,7 +61,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(1);
-var router_1 = __webpack_require__(434);
+var router_1 = __webpack_require__(435);
 var auth_service_1 = __webpack_require__(281);
 var LogoutComponent = (function () {
     function LogoutComponent(authService, router) {
@@ -102,8 +102,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(1);
-var forms_1 = __webpack_require__(433);
-var router_1 = __webpack_require__(434);
+var forms_1 = __webpack_require__(434);
+var router_1 = __webpack_require__(435);
 var user_model_1 = __webpack_require__(989);
 var auth_service_1 = __webpack_require__(281);
 var SigninComponent = (function () {
@@ -162,7 +162,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(1);
-var forms_1 = __webpack_require__(433);
+var forms_1 = __webpack_require__(434);
 var auth_service_1 = __webpack_require__(281);
 var user_model_1 = __webpack_require__(989);
 var SignupComponent = (function () {
@@ -226,7 +226,7 @@ exports.User = User;
 
 "use strict";
 "use strict";
-var router_1 = __webpack_require__(434);
+var router_1 = __webpack_require__(435);
 var signup_component_1 = __webpack_require__(988);
 var signin_component_1 = __webpack_require__(987);
 var logout_component_1 = __webpack_require__(986);

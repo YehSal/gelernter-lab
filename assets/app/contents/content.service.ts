@@ -23,11 +23,19 @@ export class ContentService {
         return this.http.post('http://localhost:3000/content' + token, body, {headers: headers})
             .map((response: Response) => {
                 const result = response.json();
+                const date = new Date();
+                const month = date.getUTCMonth() + 1; //months from 1-12
+                const day = date.getUTCDate();
+                const year = date.getUTCFullYear();
+                const newDate = year + "/" + month + "/" + day;
+
                 const content = new Content(
                     result.obj.name,
                     result.obj.user.firstName,
                     result.obj._id,
-                    result.obj.user._id);
+                    result.obj.user._id,
+                    date
+                );
                 this.contents.push(content);
                 return content;
             })
