@@ -7,7 +7,7 @@ import { ContentListComponent } from "./content-list.component";
 import { ContentInputComponent } from "./content-input.component";
 import { ContentsComponent } from "./contents.component";
 import { ContentService } from "./content.service";
-import {FileDropDirective, FileSelectDirective} from "ng2-file-upload";
+import { FileDropDirective, FileSelectDirective} from "ng2-file-upload";
 
 
 @NgModule({

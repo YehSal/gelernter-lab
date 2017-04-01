@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { ContentService } from './content.service';
 import { Content } from './content.model';
 import { NgForm } from '@angular/forms';
+import { FileUploader } from "ng2-file-upload";
+
+// const URL = '/api/';
+const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 @Component({
     selector: 'app-content-input',
@@ -11,6 +15,19 @@ import { NgForm } from '@angular/forms';
 
 export class ContentInputComponent implements OnInit {
     content: Content;
+
+    public uploader:FileUploader = new FileUploader({url: URL});
+
+    public hasBaseDropZoneOver:boolean = false;
+    public hasAnotherDropZoneOver:boolean = false;
+
+    public fileOverBase(e:any):void {
+        this.hasBaseDropZoneOver = e;
+    }
+
+    public fileOverAnother(e:any):void {
+        this.hasAnotherDropZoneOver = e;
+    }
 
     constructor(private contentService: ContentService) {}
 
