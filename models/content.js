@@ -20,7 +20,10 @@ var schema = new Schema({
         default: Date.now
     },
     file : {
-        type: Schema.Types.Mixed
+        type: String
+    },
+    tags: {
+        type: String
     }
 });
 
