@@ -10,19 +10,17 @@
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" [ngModel]="content?.name">
-            <p class="help-block">Write the name of your content here</p>
+            <input type="text" class="form-control" id="name" name="name" [ngModel]="content?.name" />
+        </div>
+        <div class="form-group">
+            <label for="tags">Tags</label>
+            <input type="text" class="form-control" id="tags" name="tags" [ngModel]="content?.tags" />
         </div>
         <div class="form-group">
             <label for="file">File</label>
-            <input type="file" class="form-control" id="file" name="file" ng2FileSelect [uploader]="uploader"  />
-            <button type="button" class="btn btn-success btn-xs"
-                    (click)="uploader.uploadAll()">
-                <span class="glyphicon glyphicon-upload"></span> Upload
-            </button>
-            <p class="help-block">Upload your file here.</p>
+            <input type="file" id="file" name="file" [ngModel]="content?.file" ng2FileSelect [uploader]="uploader" />
         </div>
         <button type="button" class="btn btn-danger" (click)="onClear(f)">Clear</button>
-        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-success" type="submit">Save</button>
     </form>
 </div>

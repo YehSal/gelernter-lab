@@ -44,12 +44,13 @@ router.post('/', function (req, res, next) {
                 error: err
             });
         }
-
+        console.log(req.body);
         var content = new Content({
             name: req.body.name,
-            user: user
+            user: user,
+            file: req.body.file,
+            tags: req.body.tags
         });
-
         content.save(function(err, result) {
             if (err) {
                 return res.status(500).json({

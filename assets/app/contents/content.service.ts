@@ -14,8 +14,8 @@ export class ContentService {
 
     constructor(private http: Http, private errorService: ErrorService){}
 
-    addMessage(message: Content) {
-        const body = JSON.stringify(message);
+    addMessage(content: Content) {
+        const body = JSON.stringify(content);
         const headers = new Headers({'Content-Type': 'application/json'});
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
@@ -23,21 +23,16 @@ export class ContentService {
         return this.http.post('http://localhost:3000/content' + token, body, {headers: headers})
             .map((response: Response) => {
                 const result = response.json();
-                const date = new Date();
-                const month = date.getUTCMonth() + 1; //months from 1-12
-                const day = date.getUTCDate();
-                const year = date.getUTCFullYear();
-                const newDate = year + "/" + month + "/" + day;
-
-                const content = new Content(
+                const newContent = new Content(
                     result.obj.name,
                     result.obj.user.firstName,
                     result.obj._id,
                     result.obj.user._id,
-                    date
                 );
-                this.contents.push(content);
-                return content;
+                newContent.tags = result.obj.tags;
+                newContent.file = result.obj.file;
+                this.contents.push(newContent);
+                return newContent;
             })
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());

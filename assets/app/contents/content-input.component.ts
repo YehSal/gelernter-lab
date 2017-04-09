@@ -5,9 +5,7 @@ import { Content } from './content.model';
 import { NgForm } from '@angular/forms';
 import { FileUploader } from "ng2-file-upload";
 
-// const URL = '/api/';
-// const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
-// const URL = 'http://localhost:3001/upload';
+const URL = 'http://localhost:3001/upload';
 
 @Component({
     selector: 'app-content-input',
@@ -17,20 +15,10 @@ import { FileUploader } from "ng2-file-upload";
 export class ContentInputComponent implements OnInit {
     content: Content;
 
-    public uploader:FileUploader = new FileUploader({url:'http://localhost:3001/upload'});
+    public uploader: FileUploader = new FileUploader({url: URL});
 
-    public hasBaseDropZoneOver:boolean = false;
-    public hasAnotherDropZoneOver:boolean = false;
-
-    public fileOverBase(e:any):void {
-        this.hasBaseDropZoneOver = e;
+    constructor(private contentService: ContentService) {
     }
-
-    public fileOverAnother(e:any):void {
-        this.hasAnotherDropZoneOver = e;
-    }
-
-    constructor(private contentService: ContentService) {}
 
     onSubmit(form: NgForm) {
         if (this.content) {
@@ -42,19 +30,26 @@ export class ContentInputComponent implements OnInit {
                 );
             this.content = null;
         } else {
-            const content = new Content(form.value.name, 'Yehia');
-            this.contentService.addMessage(content)
-                .subscribe(
-                    data => console.log(data),
-                    error => console.log(error)
-                );
+            this.uploader.uploadAll();
+            this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+                response = JSON.parse(response);
+                const content = new Content(form.value.name, 'User');
+                content.tags = form.value.tags;
+                content.file = response.obj.path;
+                this.contentService.addMessage(content)
+                    .subscribe(
+                        data => console.log(data),
+                        error => console.log(error)
+                    );
+                form.resetForm();
+            };
         }
-        form.resetForm();
     }
 
     onClear(form: NgForm) {
         this.content = null;
         form.resetForm();
+        this.uploader.clearQueue();
     }
 
     ngOnInit() {
@@ -63,3 +58,6 @@ export class ContentInputComponent implements OnInit {
         );
     }
 }
+
+
+

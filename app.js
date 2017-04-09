@@ -53,15 +53,18 @@ var upload = multer({ //multer settings
     storage: storage
 }).single('file');
 
-/** API path that will upload the files */
+// API path that will upload the files
 app.post('/upload', function(req, res) {
     upload(req,res,function(err){
-        console.log(req.file);
+        const file = req.file;
         if(err){
             res.json({error_code:1,err_desc:err});
             return;
         }
-        res.json({error_code:0,err_desc:null});
+        res.json({
+            message: "File Uploaded",
+            obj: file
+        });
     });
 });
 

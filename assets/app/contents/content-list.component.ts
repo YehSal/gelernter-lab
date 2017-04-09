@@ -7,12 +7,13 @@ import { ContentService } from './content.service';
 @Component({
     selector: 'app-content-list',
     template: `
-        <div class="col-md-8 col-md-offset-2">
-            <app-content
-                [content]="content"
-                *ngFor="let content of contents"></app-content>
+        <div class="contrainer col-md-8 col-md-offset-2">
+            <app-content [content]="content" *ngFor="let content of contents">
+            </app-content>
         </div>
     `,
+    styles:[`
+    `]
 })
 
 export class ContentListComponent implements OnInit {
