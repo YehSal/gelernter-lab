@@ -1,7 +1,8 @@
 <article class="panel panel-default">
     <div class="panel-body">
-        {{ content.name }}
+        {{ content.file }}
     </div>
+    <img [src]="content.file" class="img-thumbnail" alt="Can't Display Image" width="304" height="236">
     <footer class="panel-footer">
         <div class="author">
             {{ content.username }}

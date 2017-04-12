@@ -48,9 +48,10 @@ router.post('/', function (req, res, next) {
         var content = new Content({
             name: req.body.name,
             user: user,
-            file: req.body.file,
+            file: '../../../' + req.body.file,
             tags: req.body.tags
         });
+        console.log('Backend:', content.file);
         content.save(function(err, result) {
             if (err) {
                 return res.status(500).json({
