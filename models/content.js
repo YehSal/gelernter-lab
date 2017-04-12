@@ -28,7 +28,7 @@ var schema = new Schema({
 });
 
 // Update user when a message is deleted
-schema.post('remove', function(message) {
+schema.post('remove', function(content) {
     User.findById(content.user, function(err, user) {
         user.contents.pull(message);
         user.save();

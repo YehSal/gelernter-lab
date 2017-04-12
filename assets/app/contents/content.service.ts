@@ -50,7 +50,8 @@ export class ContentService {
                         content.name,
                         content.user.firstName,
                         content._id,
-                        content.user._id
+                        content.user._id,
+                        content.file
                     ));
                 }
                 this.contents = transformedContents;

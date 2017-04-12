@@ -26,6 +26,7 @@ import { ContentService } from './content.service';
 export class ContentComponent {
     @Input() content: Content;
 
+
     constructor(private contentService: ContentService) {}
 
     onEdit() {
@@ -35,7 +36,8 @@ export class ContentComponent {
     onDelete() {
         this.contentService.deleteMessage(this.content)
             .subscribe(
-                result => console.log(result)
+                result => console.log(result),
+                error => console.log(error)
             );
     }
 
