@@ -27,10 +27,30 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
-                loaders: [
-                    'file?hash=sha512&digest=hex&name=[hash].[ext]',
-                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-                ]
+                    loaders: ['file-loader?name=/uploads/[name].[ext]', {
+                    loader: 'file',
+                    query: {
+                        mozjpeg: {
+                            progressive: true,
+                        },
+                        gifsicle: {
+                            interlaced: false,
+                        },
+                        optipng: {
+                            optimizationLevel: 4,
+                        },
+                        pngquant: {
+                            quality: '75-90',
+                            speed: 3,
+                        },
+                    },
+                    output: {
+                        path: './public/uploads',
+                        publicPath: "/uploads/",
+                    }
+                }],
+                exclude: /node_modules/,
+                include: './uploads'
             },
             {
                 test: /\.html$/,

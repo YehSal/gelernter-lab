@@ -44,14 +44,16 @@ router.post('/', function (req, res, next) {
                 error: err
             });
         }
-        console.log(req.body);
+        var path = req.body.file;
+        path = path.split('');
+        path.splice(0, 6);
+        path = path.join('');
         var content = new Content({
             name: req.body.name,
             user: user,
-            file: '../../../' + req.body.file,
+            file: path,
             tags: req.body.tags
         });
-        console.log('Backend:', content.file);
         content.save(function(err, result) {
             if (err) {
                 return res.status(500).json({
