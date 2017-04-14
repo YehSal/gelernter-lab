@@ -1,5 +1,5 @@
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Content } from './content.model';
 import { ContentService } from './content.service';
@@ -25,7 +25,6 @@ import { ContentService } from './content.service';
 
 export class ContentComponent {
     @Input() content: Content;
-
 
     constructor(private contentService: ContentService) {}
 
