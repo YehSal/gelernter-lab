@@ -1,15 +1,18 @@
-<article class="panel panel-default">
-    <div class="panel-body">
-        {{ content.file }}
-    </div>
-    <img [src]="content.file" class="img-thumbnail" alt="Can't Display Image" width="304" height="236">
-    <footer class="panel-footer">
-        <div class="author">
-            {{ content.username }}
+<div class="container hvr-grow">
+    <article class="panel panel-default">
+        <div class="panel-body">
+            {{ content.name }}
         </div>
-        <div class="config" *ngIf="belongsToUser()">
-            <a (click)="onEdit()">Edit</a>
-            <a (click)="onDelete()">Delete</a>
-        </div>
-    </footer>
-</article>
+        <img [src]="content.file" class="img-thumbnail" alt="Can't Display Image" width="304" height="236">
+        <footer class="panel-footer">
+            <div class="author">
+                {{ content.username }}
+            </div>
+            <div class="config" *ngIf="belongsToUser()">
+                <a (click)="onEdit()">Edit</a>
+                <a (click)="onDelete()">Delete</a>
+            </div>
+        </footer>
+    </article>
+</div>
+

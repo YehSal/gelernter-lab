@@ -42,7 +42,7 @@ module.exports = {
                         pngquant: {
                             quality: '75-90',
                             speed: 3,
-                        },
+                        }
                     },
                     output: {
                         path: './public/uploads',
