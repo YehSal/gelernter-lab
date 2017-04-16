@@ -6,7 +6,15 @@ import { ContentService } from './content.service';
 
 @Component({
     selector: 'app-content-list',
-    templateUrl: './content-list.component.html'
+    templateUrl: './content-list.component.html',
+    styles: [`
+        .container {
+            overflow: scroll;
+            white-space: nowrap;
+            height: 400px;
+            width: 1000px;
+        }
+    `]
 })
 
 export class ContentListComponent implements OnInit {
