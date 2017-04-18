@@ -17,6 +17,9 @@ import { ContentService } from './content.service';
             width: 250px;
             white-space: normal;
         }
+        .textcenter {
+            text-align:center;
+        }
         .container {
             height: 250px;
             width: 250px;
@@ -25,11 +28,10 @@ import { ContentService } from './content.service';
             display: block;
             font-style: italic;
             font-size: 12px;
+            text-align: center;
             width: 80%;
         }
         .config {
-            display: block;
-            text-align: right;
             font-size: 12px;
             width: 19%;
         }
@@ -39,10 +41,15 @@ import { ContentService } from './content.service';
             height: 150px;
             margin: auto;
         }
+        .panel{
+
+        }
+        .panel-default{
+
+        }
 
         /* Grow */
         .hvr-grow {
-            display: inline-block;
             vertical-align: middle;
             transform: translateZ(0);
             box-shadow: 0 0 1px rgba(0, 0, 0, 0);

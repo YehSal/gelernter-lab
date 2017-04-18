@@ -4,16 +4,14 @@ import { Component } from '@angular/core';
     selector: 'app-header',
     template: `
         <header class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <ul class="nav nav-pills">
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['/contents']">Contents</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['/auth']">Authentication</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="nav nav-pills">
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/contents']">Contents</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/auth']">Authentication</a>
+                </li>
+            </ul>
         </header>
     `
 })

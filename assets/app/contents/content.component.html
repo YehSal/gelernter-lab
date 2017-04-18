@@ -1,18 +1,38 @@
-<div class="container hvr-grow">
-    <article class="panel panel-default">
-        <div class="panel-body">
-            {{ content.name }}
+<div class="ui raised segment hvr-grow">
+    <div class="ui row">
+        <div class="centered column">
+            <h3 class="ui textcenter header">{{ content.name }}</h3>
+            <div class="ui divider"></div>
         </div>
-        <img [src]="content.file" class="img-thumbnail" alt="Can't Display Image" width="304" height="236">
-        <footer class="panel-footer">
-            <div class="author">
-                {{ content.username }}
+    </div>
+    
+    <div class="row">
+        <div class="centered column">
+            <div class="large img-thumbnail">
+                <img [src]="content.file" class="img-thumbnail" alt="Can't Display Image" width="304" height="236">
             </div>
-            <div class="config" *ngIf="belongsToUser()">
-                <a (click)="onEdit()">Edit</a>
-                <a (click)="onDelete()">Delete</a>
-            </div>
-        </footer>
-    </article>
+        </div>
+    </div>
+    <div class="row">
+        <h2 class="ui textcenter header"> <br> #tags: </h2>
+        <div class="ui horizontal divider"></div>
+    </div>
+    <!-- <div class="author"> -->
+    <div class="row">
+        <div class="center aligned column">
+            <h3 class="ui textcenter header">{{ content.tags }}</h3>
+            <div class="ui divider"></div>
+        </div>
+    </div>
+    <!-- </div> -->
+    <!-- <div class="config"> -->
+    <div class="row" *ngIf="belongsToUser()">
+        <div class="eight wide column">
+            <button class="ui green button" (click)="onEdit()">Edit</button>
+        </div>
+        <div class="eight wide column">
+            <button class="ui red button" (click)="onDelete()">Delete</button>
+        </div>
+    </div>
+    <!-- </div> -->
 </div>
-

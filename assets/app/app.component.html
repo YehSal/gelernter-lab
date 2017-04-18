@@ -1,6 +1,14 @@
-<div class="container">
-    <app-header></app-header>
-    <hr>
-    <router-outlet></router-outlet>
+<div class="ui equal width center aligned padded grid">
+	<div class="row">
+		<div class="white sixteen wide column">
+			<app-header></app-header>
+		</div>
+	</div>
+    <div class="ui row">
+    	<div class="grey column">
+    		<router-outlet></router-outlet>
+    	</div>
+    </div>
+    <div class="grey column"></div>
 </div>
 <app-error></app-error>
