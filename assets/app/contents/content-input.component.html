@@ -6,33 +6,54 @@
     html, body { height: 100%; }
 </style>
 
+
 <div class="ui padded centered grid">
     <div class="ui eight wide column">
         <div class="ui segment">
-            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-                <div class="form-group">
-                    <label for="name">
-                        <h2 class="ui header"> Name </h2>
-                    </label>
-                    <input type="text" class="form-control" id="name" name="name" [ngModel]="content?.name" />
+            <div class="row">
+                <div class="ui grid">
+                    <div class="ui one wide column"></div>
+
+                    <div class="ui fourteen wide column">
+                        <div class="row">
+                            <h1 class="ui centered dividing header">File Upload Parameters: </h1>
+                            <br>
+                        </div>
+
+                        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                            <div class="ui form">
+                                <div class="field">
+                                    <div class="ui labeled input">
+                                        <div class="ui label">File Name:</div>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="History Report" [ngModel]="content?.name" />
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui right labeled left icon input">
+                                        <i class="tags icon"></i>
+                                        <input type="text" class="form-control" id="tags" name="tags" placeholder="enter tags" [ngModel]="content?.tags" />
+                                        <a class="ui tag label">
+                                            Add Tag
+                                        </a>
+                                    </div>
+                                </div>
+
+                                    <div class="field">
+                                        <div class="ui input">
+                                            <input type="file" id="file" name="file" [ngModel]="content?.file" ng2FileSelect [uploader]="uploader" />
+                                        </div>
+                                    </div>
+
+                                        <button class="ui right floated large green button" type="submit">Save File</button>
+                                        <button class="ui right floated large red button" (click)="onClear(f)">Clear Input</button>
+
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="ui one wide column"></div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="tags">
-                        <h2 class="ui header">Tags </h2>
-                        </label>
-                    <input type="text" class="form-control" id="tags" name="tags" [ngModel]="content?.tags" />
-                </div>
-                <div class="form-group">
-                    <label for="file">
-                        <h2 class="ui header">File </h2>
-                    </label>
-                    <input type="file" id="file" name="file" [ngModel]="content?.file" ng2FileSelect [uploader]="uploader" />
-                </div>
-                <button type="button" class="left floated btn btn-danger" (click)="onClear(f)">Clear</button>
-                <button class="left floated btn btn-success" type="submit">Save</button>
-            </form>
+            </div>
         </div>
     </div>
-    
 </div>
