@@ -84,6 +84,13 @@ export class ContentComponent {
             );
     }
 
+    // onDownload(uri, name) {
+    //     var link = document.createElement("a");
+    //     link.download = this.content.name;
+    //     link.href = this.content.file;
+    //     link.click();
+    // }
+
     belongsToUser() {
         return localStorage.getItem('userId') == this.content.userId;
     }
