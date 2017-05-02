@@ -37,17 +37,20 @@
                                         </a>
                                     </div>
                                 </div>
-
-                                    <div class="field">
+                                <div class="fields">
+                                    <div class="eight wide field">
                                         <div class="ui input">
                                             <input type="file" id="file" name="file" [ngModel]="content?.file" ng2FileSelect [uploader]="uploader" />
                                         </div>
                                     </div>
 
-                                        <button class="ui right floated large green button" type="submit">Save File</button>
-                                        <button class="ui right floated large red button" (click)="onClear(f)">Clear Input</button>
-
-
+                                    <div class="four wide field">
+                                        <button class="ui large green button" type="submit">Save File</button>
+                                    </div>
+                                    <div class="four wide field">
+                                        <button class="ui large right aligned red button" (click)="onClear(f)">Clear Inputs</button>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
