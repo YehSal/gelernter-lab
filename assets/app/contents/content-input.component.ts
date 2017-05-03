@@ -30,6 +30,7 @@ export class ContentInputComponent implements OnInit {
                 );
             this.content = null;
         } else {
+            // Here is potentially the bug where multiple files get uploaded
             this.uploader.uploadAll();
             this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
                 response = JSON.parse(response);

@@ -40,7 +40,7 @@
                                 <div class="fields">
                                     <div class="eight wide field">
                                         <div class="ui input">
-                                            <input type="file" id="file" name="file" [ngModel]="content?.file" ng2FileSelect [uploader]="uploader" />
+                                            <input type="file" id="file" name="file" [ngModel]="content?.file" ng2FileSelect [uploader]="uploader" (click)="onClear(f)" />
                                         </div>
                                     </div>
 
